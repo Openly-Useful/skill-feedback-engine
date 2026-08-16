@@ -1,0 +1,491 @@
+{
+  "schemaVersion": 1,
+  "route": "/status",
+  "initiative": {
+    "id": "skill-feedback-engine",
+    "name": "Skill Feedback Engine",
+    "release": "v0.1.0",
+    "state": "active"
+  },
+  "source": {
+    "repository": "https://github.com/Openly-Useful/skill-feedback-engine",
+    "commit": "1281e0c0eb8ee7cadb17a73c33973cba157fbe80",
+    "deploymentId": null,
+    "buildId": "31919870878",
+    "manifestSha256": null
+  },
+  "audit": {
+    "auditId": "v0-1-0-launch-audit",
+    "state": "current",
+    "evidenceAsOf": "2026-08-16T02:28:28.000Z",
+    "verifiedAt": "2026-08-16T02:28:28.000Z",
+    "nextDueAt": "2026-08-23T02:28:28.000Z",
+    "staleAfterSeconds": 604800
+  },
+  "totalWeight": 100,
+  "phases": [
+    {
+      "id": "core",
+      "name": "Core engine",
+      "summary": "Local observation storage, review synthesis, privacy boundaries, and portable skill behavior.",
+      "weight": 50,
+      "tasks": [
+        {
+          "id": "core-engine",
+          "name": "Implement the feedback engine",
+          "summary": "Provide local SQLite observations, incremental and full reviews, proposal coalescing, and sanitized exports.",
+          "status": "complete",
+          "weight": 25,
+          "earnedWeight": 25,
+          "remainingHours": {
+            "min": 0,
+            "max": 0
+          },
+          "recurring": false,
+          "deferred": false,
+          "owner": {
+            "type": "role",
+            "id": "maintainer",
+            "label": "Project maintainer"
+          },
+          "nextAction": null,
+          "evidenceRequirement": {
+            "minimumTier": "public_reproducible",
+            "minCount": 1
+          },
+          "evidenceRefs": [
+            "initial-release-commit"
+          ],
+          "gateRefs": []
+        },
+        {
+          "id": "privacy-boundary",
+          "name": "Validate privacy boundaries",
+          "summary": "Keep raw evidence and private source paths out of proposal exports.",
+          "status": "complete",
+          "weight": 15,
+          "earnedWeight": 15,
+          "remainingHours": {
+            "min": 0,
+            "max": 0
+          },
+          "recurring": false,
+          "deferred": false,
+          "owner": {
+            "type": "role",
+            "id": "maintainer",
+            "label": "Project maintainer"
+          },
+          "nextAction": null,
+          "evidenceRequirement": {
+            "minimumTier": "public_reproducible",
+            "minCount": 1
+          },
+          "evidenceRefs": [
+            "initial-ci-run"
+          ],
+          "gateRefs": []
+        },
+        {
+          "id": "portable-skill",
+          "name": "Ship the portable Agent Skill",
+          "summary": "Provide concise SKILL.md instructions, observation policy, and provider routing guidance.",
+          "status": "complete",
+          "weight": 10,
+          "earnedWeight": 10,
+          "remainingHours": {
+            "min": 0,
+            "max": 0
+          },
+          "recurring": false,
+          "deferred": false,
+          "owner": {
+            "type": "role",
+            "id": "maintainer",
+            "label": "Project maintainer"
+          },
+          "nextAction": null,
+          "evidenceRequirement": {
+            "minimumTier": "public_reproducible",
+            "minCount": 1
+          },
+          "evidenceRefs": [
+            "initial-ci-run"
+          ],
+          "gateRefs": []
+        }
+      ]
+    },
+    {
+      "id": "quality",
+      "name": "Quality and portability",
+      "summary": "Automated tests, validation, documentation, and provider-specific activation adapters.",
+      "weight": 25,
+      "tasks": [
+        {
+          "id": "automated-validation",
+          "name": "Run automated validation",
+          "summary": "Exercise the supported Python versions, CLI installation, core workflow, redaction, alias mapping, and skill structure.",
+          "status": "complete",
+          "weight": 15,
+          "earnedWeight": 15,
+          "remainingHours": {
+            "min": 0,
+            "max": 0
+          },
+          "recurring": true,
+          "deferred": false,
+          "owner": {
+            "type": "automation",
+            "id": "github-actions",
+            "label": "GitHub Actions"
+          },
+          "nextAction": null,
+          "evidenceRequirement": {
+            "minimumTier": "public_reproducible",
+            "minCount": 1
+          },
+          "evidenceRefs": [
+            "initial-ci-run"
+          ],
+          "gateRefs": []
+        },
+        {
+          "id": "documentation-adapters",
+          "name": "Document and adapt the workflow",
+          "summary": "Document installation and usage while keeping Codex, Claude, and generic adapters thin.",
+          "status": "complete",
+          "weight": 10,
+          "earnedWeight": 10,
+          "remainingHours": {
+            "min": 0,
+            "max": 0
+          },
+          "recurring": false,
+          "deferred": false,
+          "owner": {
+            "type": "role",
+            "id": "maintainer",
+            "label": "Project maintainer"
+          },
+          "nextAction": null,
+          "evidenceRequirement": {
+            "minimumTier": "public_reproducible",
+            "minCount": 1
+          },
+          "evidenceRefs": [
+            "initial-release-commit"
+          ],
+          "gateRefs": []
+        }
+      ]
+    },
+    {
+      "id": "launch",
+      "name": "Public launch",
+      "summary": "Public repository, versioned release, community entry points, social presentation, and Openly Useful catalog integration.",
+      "weight": 25,
+      "tasks": [
+        {
+          "id": "public-repository",
+          "name": "Publish the public repository",
+          "summary": "Publish the canonical source under the Openly Useful organization with an MIT license and green CI.",
+          "status": "complete",
+          "weight": 10,
+          "earnedWeight": 10,
+          "remainingHours": {
+            "min": 0,
+            "max": 0
+          },
+          "recurring": false,
+          "deferred": false,
+          "owner": {
+            "type": "role",
+            "id": "maintainer",
+            "label": "Project maintainer"
+          },
+          "nextAction": null,
+          "evidenceRequirement": {
+            "minimumTier": "public_reproducible",
+            "minCount": 1
+          },
+          "evidenceRefs": [
+            "initial-release-commit"
+          ],
+          "gateRefs": []
+        },
+        {
+          "id": "versioned-release",
+          "name": "Publish v0.1.0",
+          "summary": "Create a public release matching the package version and initial validated source commit.",
+          "status": "complete",
+          "weight": 5,
+          "earnedWeight": 5,
+          "remainingHours": {
+            "min": 0,
+            "max": 0
+          },
+          "recurring": false,
+          "deferred": false,
+          "owner": {
+            "type": "role",
+            "id": "maintainer",
+            "label": "Project maintainer"
+          },
+          "nextAction": null,
+          "evidenceRequirement": {
+            "minimumTier": "public_reproducible",
+            "minCount": 1
+          },
+          "evidenceRefs": [
+            "v0-1-0-release"
+          ],
+          "gateRefs": []
+        },
+        {
+          "id": "site-catalog",
+          "name": "Add the project to openlyuseful.org",
+          "summary": "Add the project card, direct repository link, and site validation coverage.",
+          "status": "in_progress",
+          "weight": 5,
+          "earnedWeight": 0,
+          "remainingHours": {
+            "min": 0.25,
+            "max": 0.5
+          },
+          "recurring": false,
+          "deferred": false,
+          "owner": {
+            "type": "role",
+            "id": "site-maintainer",
+            "label": "Openly Useful site maintainer"
+          },
+          "nextAction": "Review and merge https://github.com/Openly-Useful/openlyuseful.org/pull/10.",
+          "evidenceRequirement": {
+            "minimumTier": "public_reproducible",
+            "minCount": 1
+          },
+          "evidenceRefs": [],
+          "gateRefs": [
+            "site-pr-merge"
+          ]
+        },
+        {
+          "id": "community-templates",
+          "name": "Add repository contribution templates",
+          "summary": "Provide structured bug, feature, and pull-request entry points in addition to organization defaults.",
+          "status": "in_progress",
+          "weight": 3,
+          "earnedWeight": 0,
+          "remainingHours": {
+            "min": 0.1,
+            "max": 0.25
+          },
+          "recurring": false,
+          "deferred": false,
+          "owner": {
+            "type": "role",
+            "id": "maintainer",
+            "label": "Project maintainer"
+          },
+          "nextAction": "Review and merge https://github.com/Openly-Useful/skill-feedback-engine/pull/1.",
+          "evidenceRequirement": {
+            "minimumTier": "public_reproducible",
+            "minCount": 1
+          },
+          "evidenceRefs": [],
+          "gateRefs": [
+            "launch-polish-pr-merge"
+          ]
+        },
+        {
+          "id": "social-preview",
+          "name": "Apply a branded repository preview",
+          "summary": "Use the canonical Openly Useful identity for a project-specific GitHub social preview.",
+          "status": "complete",
+          "weight": 2,
+          "earnedWeight": 2,
+          "remainingHours": {
+            "min": 0,
+            "max": 0
+          },
+          "recurring": false,
+          "deferred": false,
+          "owner": {
+            "type": "role",
+            "id": "maintainer",
+            "label": "Project maintainer"
+          },
+          "nextAction": null,
+          "evidenceRequirement": {
+            "minimumTier": "direct",
+            "minCount": 1
+          },
+          "evidenceRefs": [
+            "repository-social-preview"
+          ],
+          "gateRefs": []
+        }
+      ]
+    }
+  ],
+  "evidence": [
+    {
+      "id": "initial-release-commit",
+      "kind": "deliverable",
+      "tier": "public_reproducible",
+      "state": "current",
+      "visibility": "public",
+      "assertion": "The canonical public repository contains the initial Skill Feedback Engine implementation, documentation, portable skill, adapters, tests, and MIT license at commit 1281e0c0eb8ee7cadb17a73c33973cba157fbe80.",
+      "publicSummary": "Initial implementation published in the canonical public repository.",
+      "capturedAt": "2026-08-16T01:34:10.000Z",
+      "verifiedAt": "2026-08-16T01:48:45.000Z",
+      "expiresAt": null,
+      "locator": {
+        "type": "commit",
+        "repository": "https://github.com/Openly-Useful/skill-feedback-engine",
+        "commit": "1281e0c0eb8ee7cadb17a73c33973cba157fbe80"
+      },
+      "integrity": null,
+      "verifier": {
+        "type": "agent",
+        "id": "codex",
+        "label": "Codex"
+      }
+    },
+    {
+      "id": "initial-ci-run",
+      "kind": "test_result",
+      "tier": "public_reproducible",
+      "state": "current",
+      "visibility": "public",
+      "assertion": "GitHub Actions run 31919870878 completed successfully for the initial public commit across the configured Python matrix and skill validation step.",
+      "publicSummary": "Initial GitHub Actions validation completed successfully.",
+      "capturedAt": "2026-08-16T01:34:14.000Z",
+      "verifiedAt": "2026-08-16T01:48:45.000Z",
+      "expiresAt": null,
+      "locator": {
+        "type": "url",
+        "url": "https://github.com/Openly-Useful/skill-feedback-engine/actions/runs/31919870878"
+      },
+      "integrity": null,
+      "verifier": {
+        "type": "automation",
+        "id": "github-actions",
+        "label": "GitHub Actions"
+      }
+    },
+    {
+      "id": "v0-1-0-release",
+      "kind": "deliverable",
+      "tier": "public_reproducible",
+      "state": "current",
+      "visibility": "public",
+      "assertion": "GitHub release v0.1.0 was published from the verified main branch on 2026-08-16.",
+      "publicSummary": "Version 0.1.0 is publicly available as a GitHub release.",
+      "capturedAt": "2026-08-16T01:48:19.000Z",
+      "verifiedAt": "2026-08-16T01:48:45.000Z",
+      "expiresAt": null,
+      "locator": {
+        "type": "url",
+        "url": "https://github.com/Openly-Useful/skill-feedback-engine/releases/tag/v0.1.0"
+      },
+      "integrity": null,
+      "verifier": {
+        "type": "agent",
+        "id": "codex",
+        "label": "Codex"
+      }
+    },
+    {
+      "id": "repository-social-preview",
+      "kind": "deliverable",
+      "tier": "direct",
+      "state": "current",
+      "visibility": "public",
+      "assertion": "The repository uses a custom 1280 by 640 Openly Useful social preview for Skill Feedback Engine, uploaded and verified in GitHub repository settings.",
+      "publicSummary": "Project-specific Openly Useful social preview is live on the repository.",
+      "capturedAt": "2026-08-16T02:28:28.000Z",
+      "verifiedAt": "2026-08-16T02:28:28.000Z",
+      "expiresAt": null,
+      "locator": {
+        "type": "url",
+        "url": "https://github.com/Openly-Useful/skill-feedback-engine"
+      },
+      "integrity": null,
+      "verifier": {
+        "type": "agent",
+        "id": "codex",
+        "label": "Codex"
+      }
+    }
+  ],
+  "gates": [
+    {
+      "id": "site-pr-merge",
+      "name": "Website catalog pull request merge",
+      "type": "external_approval",
+      "status": "waiting",
+      "reason": "The openlyuseful.org change must be reviewed and merged in its own repository.",
+      "owner": {
+        "type": "role",
+        "id": "site-maintainer",
+        "label": "Openly Useful site maintainer"
+      },
+      "nextAction": "Review and merge https://github.com/Openly-Useful/openlyuseful.org/pull/10.",
+      "wait": {
+        "kind": "unknown",
+        "label": "Maintainer review"
+      },
+      "taskRefs": [
+        "site-catalog"
+      ]
+    },
+    {
+      "id": "launch-polish-pr-merge",
+      "name": "Skill Feedback Engine launch-polish pull request merge",
+      "type": "external_approval",
+      "status": "waiting",
+      "reason": "Repository-facing launch additions must be reviewed before merging to main.",
+      "owner": {
+        "type": "role",
+        "id": "maintainer",
+        "label": "Project maintainer"
+      },
+      "nextAction": "Review and merge https://github.com/Openly-Useful/skill-feedback-engine/pull/1.",
+      "wait": {
+        "kind": "unknown",
+        "label": "Maintainer review"
+      },
+      "taskRefs": [
+        "community-templates"
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "id": "core-before-privacy-validation",
+      "type": "blocks",
+      "prerequisiteTaskId": "core-engine",
+      "dependentTaskId": "privacy-boundary"
+    },
+    {
+      "id": "core-before-automated-validation",
+      "type": "blocks",
+      "prerequisiteTaskId": "core-engine",
+      "dependentTaskId": "automated-validation"
+    },
+    {
+      "id": "repository-before-release",
+      "type": "blocks",
+      "prerequisiteTaskId": "public-repository",
+      "dependentTaskId": "versioned-release"
+    },
+    {
+      "id": "repository-before-site-catalog",
+      "type": "blocks",
+      "prerequisiteTaskId": "public-repository",
+      "dependentTaskId": "site-catalog"
+    }
+  ]
+}
