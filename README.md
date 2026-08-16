@@ -2,13 +2,17 @@
 
 **Observe work. Propose better skills.**
 
+[![CI](https://github.com/Openly-Useful/skill-feedback-engine/actions/workflows/ci.yml/badge.svg)](https://github.com/Openly-Useful/skill-feedback-engine/actions/workflows/ci.yml)
+[![Release](https://img.shields.io/github/v/release/Openly-Useful/skill-feedback-engine)](https://github.com/Openly-Useful/skill-feedback-engine/releases/latest)
+[![Openly Useful](https://img.shields.io/badge/Openly%20Useful-openlyuseful.org-247a4b)](https://openlyuseful.org/#projects)
+
 Skill Feedback Engine is a local-first, provider-neutral feedback loop for Agent Skills. It captures high-value corrections, failures, reusable patterns, and validated outcomes; groups recurring signals; and prepares sanitized, review-gated skill improvement proposals.
 
 It does not silently rewrite skills, publish conversation history, or merge pull requests.
 
 ## Status
 
-This repository contains a functional v0.1 core:
+This repository contains the functional [`v0.1.0`](https://github.com/Openly-Useful/skill-feedback-engine/releases/tag/v0.1.0) core:
 
 - Standard-library Python CLI with no runtime dependencies.
 - Concurrent-safe SQLite state under `~/.local/share/skill-feedback-engine` by default.
