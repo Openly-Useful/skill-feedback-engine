@@ -5,21 +5,21 @@
     "id": "skill-feedback-engine",
     "name": "Skill Feedback Engine",
     "release": "v0.1.0",
-    "state": "active"
+    "state": "complete"
   },
   "source": {
     "repository": "https://github.com/Openly-Useful/skill-feedback-engine",
-    "commit": "1281e0c0eb8ee7cadb17a73c33973cba157fbe80",
+    "commit": "61680ee65eb280e7ec984146c4e0d43641adfa05",
     "deploymentId": null,
-    "buildId": "31919870878",
+    "buildId": "31969493020",
     "manifestSha256": null
   },
   "audit": {
     "auditId": "v0-1-0-launch-audit",
     "state": "current",
-    "evidenceAsOf": "2026-08-16T02:28:28.000Z",
-    "verifiedAt": "2026-08-16T02:28:28.000Z",
-    "nextDueAt": "2026-08-23T02:28:28.000Z",
+    "evidenceAsOf": "2026-08-16T20:05:59.000Z",
+    "verifiedAt": "2026-08-16T20:05:59.000Z",
+    "nextDueAt": "2026-08-23T20:05:59.000Z",
     "staleAfterSeconds": 604800
   },
   "totalWeight": 100,
@@ -246,12 +246,12 @@
           "id": "site-catalog",
           "name": "Add the project to openlyuseful.org",
           "summary": "Add the project card, direct repository link, and site validation coverage.",
-          "status": "in_progress",
+          "status": "complete",
           "weight": 5,
-          "earnedWeight": 0,
+          "earnedWeight": 5,
           "remainingHours": {
-            "min": 0.25,
-            "max": 0.5
+            "min": 0,
+            "max": 0
           },
           "recurring": false,
           "deferred": false,
@@ -260,12 +260,14 @@
             "id": "site-maintainer",
             "label": "Openly Useful site maintainer"
           },
-          "nextAction": "Review and merge https://github.com/Openly-Useful/openlyuseful.org/pull/10.",
+          "nextAction": null,
           "evidenceRequirement": {
             "minimumTier": "public_reproducible",
             "minCount": 1
           },
-          "evidenceRefs": [],
+          "evidenceRefs": [
+            "site-catalog-production"
+          ],
           "gateRefs": [
             "site-pr-merge"
           ]
@@ -274,12 +276,12 @@
           "id": "community-templates",
           "name": "Add repository contribution templates",
           "summary": "Provide structured bug, feature, and pull-request entry points in addition to organization defaults.",
-          "status": "in_progress",
+          "status": "complete",
           "weight": 3,
-          "earnedWeight": 0,
+          "earnedWeight": 3,
           "remainingHours": {
-            "min": 0.1,
-            "max": 0.25
+            "min": 0,
+            "max": 0
           },
           "recurring": false,
           "deferred": false,
@@ -288,12 +290,14 @@
             "id": "maintainer",
             "label": "Project maintainer"
           },
-          "nextAction": "Review and merge https://github.com/Openly-Useful/skill-feedback-engine/pull/1.",
+          "nextAction": null,
           "evidenceRequirement": {
             "minimumTier": "public_reproducible",
             "minCount": 1
           },
-          "evidenceRefs": [],
+          "evidenceRefs": [
+            "launch-polish-merge"
+          ],
           "gateRefs": [
             "launch-polish-pr-merge"
           ]
@@ -418,6 +422,51 @@
         "id": "codex",
         "label": "Codex"
       }
+    },
+    {
+      "id": "site-catalog-production",
+      "kind": "deliverable",
+      "tier": "public_reproducible",
+      "state": "current",
+      "visibility": "public",
+      "assertion": "Openly Useful site pull request 10 merged as commit 0a2ad3802456f5124a58cfaa6856ad6d04f7b7a8; main-branch validation run 31969480585 succeeded, and the public catalog exposes the Skill Feedback Engine project card and direct repository link.",
+      "publicSummary": "Skill Feedback Engine is live in the Openly Useful public project catalog.",
+      "capturedAt": "2026-08-16T20:04:31.000Z",
+      "verifiedAt": "2026-08-16T20:05:59.000Z",
+      "expiresAt": null,
+      "locator": {
+        "type": "url",
+        "url": "https://github.com/Openly-Useful/openlyuseful.org/pull/10"
+      },
+      "integrity": null,
+      "verifier": {
+        "type": "agent",
+        "id": "codex",
+        "label": "Codex"
+      }
+    },
+    {
+      "id": "launch-polish-merge",
+      "kind": "deliverable",
+      "tier": "public_reproducible",
+      "state": "current",
+      "visibility": "public",
+      "assertion": "Skill Feedback Engine pull request 1 merged as commit 61680ee65eb280e7ec984146c4e0d43641adfa05, publishing the contribution templates and launch assets; main-branch CI run 31969493020 succeeded.",
+      "publicSummary": "The reviewed v0.1.0 launch-polish changes are merged with green main-branch CI.",
+      "capturedAt": "2026-08-16T20:04:47.000Z",
+      "verifiedAt": "2026-08-16T20:05:59.000Z",
+      "expiresAt": null,
+      "locator": {
+        "type": "commit",
+        "repository": "https://github.com/Openly-Useful/skill-feedback-engine",
+        "commit": "61680ee65eb280e7ec984146c4e0d43641adfa05"
+      },
+      "integrity": null,
+      "verifier": {
+        "type": "automation",
+        "id": "github-actions",
+        "label": "GitHub Actions"
+      }
     }
   ],
   "gates": [
@@ -425,18 +474,15 @@
       "id": "site-pr-merge",
       "name": "Website catalog pull request merge",
       "type": "external_approval",
-      "status": "waiting",
-      "reason": "The openlyuseful.org change must be reviewed and merged in its own repository.",
+      "status": "satisfied",
+      "reason": "Openly Useful site pull request 10 was reviewed, merged, validated on main, and observed on the public catalog.",
       "owner": {
         "type": "role",
         "id": "site-maintainer",
         "label": "Openly Useful site maintainer"
       },
-      "nextAction": "Review and merge https://github.com/Openly-Useful/openlyuseful.org/pull/10.",
-      "wait": {
-        "kind": "unknown",
-        "label": "Maintainer review"
-      },
+      "nextAction": null,
+      "wait": null,
       "taskRefs": [
         "site-catalog"
       ]
@@ -445,18 +491,15 @@
       "id": "launch-polish-pr-merge",
       "name": "Skill Feedback Engine launch-polish pull request merge",
       "type": "external_approval",
-      "status": "waiting",
-      "reason": "Repository-facing launch additions must be reviewed before merging to main.",
+      "status": "satisfied",
+      "reason": "Skill Feedback Engine pull request 1 was reviewed, merged, and validated by main-branch CI.",
       "owner": {
         "type": "role",
         "id": "maintainer",
         "label": "Project maintainer"
       },
-      "nextAction": "Review and merge https://github.com/Openly-Useful/skill-feedback-engine/pull/1.",
-      "wait": {
-        "kind": "unknown",
-        "label": "Maintainer review"
-      },
+      "nextAction": null,
+      "wait": null,
       "taskRefs": [
         "community-templates"
       ]
