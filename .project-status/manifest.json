@@ -260,7 +260,7 @@
             "id": "site-maintainer",
             "label": "Openly Useful site maintainer"
           },
-          "nextAction": "Review and merge the website catalog pull request.",
+          "nextAction": "Review and merge https://github.com/Openly-Useful/openlyuseful.org/pull/10.",
           "evidenceRequirement": {
             "minimumTier": "public_reproducible",
             "minCount": 1
@@ -288,7 +288,7 @@
             "id": "maintainer",
             "label": "Project maintainer"
           },
-          "nextAction": "Review and merge the launch-polish pull request.",
+          "nextAction": "Review and merge https://github.com/Openly-Useful/skill-feedback-engine/pull/1.",
           "evidenceRequirement": {
             "minimumTier": "public_reproducible",
             "minCount": 1
@@ -432,7 +432,7 @@
         "id": "site-maintainer",
         "label": "Openly Useful site maintainer"
       },
-      "nextAction": "Review and merge the website catalog pull request.",
+      "nextAction": "Review and merge https://github.com/Openly-Useful/openlyuseful.org/pull/10.",
       "wait": {
         "kind": "unknown",
         "label": "Maintainer review"
@@ -452,7 +452,7 @@
         "id": "maintainer",
         "label": "Project maintainer"
       },
-      "nextAction": "Review and merge the launch-polish pull request.",
+      "nextAction": "Review and merge https://github.com/Openly-Useful/skill-feedback-engine/pull/1.",
       "wait": {
         "kind": "unknown",
         "label": "Maintainer review"
