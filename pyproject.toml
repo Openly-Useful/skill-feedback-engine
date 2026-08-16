@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "skill-feedback-engine"
+version = "0.1.0"
+description = "A local-first, provider-neutral feedback loop for agent skills."
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "MIT" }
+authors = [{ name = "Openly Useful" }]
+keywords = ["agent-skills", "ai-agents", "feedback", "codex", "claude"]
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "License :: OSI Approved :: MIT License",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3 :: Only",
+]
+dependencies = []
+
+[project.scripts]
+skill-feedback = "skill_feedback_engine.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]

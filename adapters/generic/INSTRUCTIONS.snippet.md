@@ -1,0 +1,1 @@
+After substantive agent work, invoke the Skill Feedback Engine only for reusable corrections, recurring failures, durable workflow patterns, or validated outcomes. Finish the user's task first. Keep raw evidence local and stage every proposed skill change for human review.

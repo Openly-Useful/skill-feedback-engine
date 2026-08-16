@@ -1,0 +1,1 @@
+For substantive tasks, use `$skill-feedback-engine` to capture only explicit corrections, recurring failures, reusable workflows, and validated outcomes. Record observations after completing the user's task. Keep capture best-effort, summaries minimal, evidence local, and all skill changes review-gated. Do not duplicate durable memory or project-status entries.

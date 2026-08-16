@@ -1,0 +1,10 @@
+{
+  "schema_version": 1,
+  "review": {
+    "minimum_signals": 2
+  },
+  "privacy": {
+    "export_evidence": false
+  },
+  "targets": []
+}

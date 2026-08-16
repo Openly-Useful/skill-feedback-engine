@@ -1,0 +1,1 @@
+Use the `skill-feedback-engine` skill after substantive work to capture explicit corrections, recurring failures, reusable workflows, and validated outcomes. Never block the primary task when capture is unavailable. Keep raw evidence local and require review before changing or publishing a skill.

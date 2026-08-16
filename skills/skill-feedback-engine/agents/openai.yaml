@@ -1,0 +1,4 @@
+interface:
+  display_name: "Skill Feedback Engine"
+  short_description: "Turn agent feedback into reviewed skill updates"
+  default_prompt: "Use $skill-feedback-engine to capture this feedback and propose a validated skill improvement."
