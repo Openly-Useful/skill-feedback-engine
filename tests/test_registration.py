@@ -7,25 +7,36 @@ from scripts.validate_registration import ROOT, validate_registration
 from skill_feedback_engine.validation import validate_skill
 
 
+REGISTRATION_FILES = [
+    "publisher/publisher.json",
+    ".codex-plugin/plugin.json",
+    ".claude-plugin/plugin.json",
+    ".claude-plugin/marketplace.json",
+    ".agents/plugins/marketplace.json",
+    "skills/skill-feedback-engine/SKILL.md",
+    "pyproject.toml",
+    "src/skill_feedback_engine/__init__.py",
+    ".project-status/manifest.json",
+]
+
+
+def copy_registration_fixture(directory: str) -> Path:
+    fixture = Path(directory)
+    for relative in REGISTRATION_FILES:
+        source = ROOT / relative
+        target = fixture / relative
+        target.parent.mkdir(parents=True, exist_ok=True)
+        target.write_bytes(source.read_bytes())
+    return fixture
+
+
 class RegistrationTests(unittest.TestCase):
     def test_repository_registration_is_current_and_mcp_free(self):
         self.assertEqual(validate_registration(), [])
 
     def test_validator_rejects_duplicate_skill_artifacts(self):
         with tempfile.TemporaryDirectory() as directory:
-            fixture = Path(directory)
-            for relative in [
-                "publisher/publisher.json",
-                ".codex-plugin/plugin.json",
-                ".claude-plugin/plugin.json",
-                ".claude-plugin/marketplace.json",
-                ".agents/plugins/marketplace.json",
-                "skills/skill-feedback-engine/SKILL.md",
-            ]:
-                source = ROOT / relative
-                target = fixture / relative
-                target.parent.mkdir(parents=True, exist_ok=True)
-                target.write_bytes(source.read_bytes())
+            fixture = copy_registration_fixture(directory)
             (fixture / "skills" / "skill-feedback-engine" / "SKILL 2.md").write_text(
                 "---\nname: skill-feedback-engine\ndescription: duplicate\n---\n",
                 encoding="utf-8",
@@ -47,19 +58,7 @@ class RegistrationTests(unittest.TestCase):
 
     def test_validator_rejects_premature_llc_activation(self):
         with tempfile.TemporaryDirectory() as directory:
-            fixture = Path(directory)
-            for relative in [
-                "publisher/publisher.json",
-                ".codex-plugin/plugin.json",
-                ".claude-plugin/plugin.json",
-                ".claude-plugin/marketplace.json",
-                ".agents/plugins/marketplace.json",
-                "skills/skill-feedback-engine/SKILL.md",
-            ]:
-                source = ROOT / relative
-                target = fixture / relative
-                target.parent.mkdir(parents=True, exist_ok=True)
-                target.write_bytes(source.read_bytes())
+            fixture = copy_registration_fixture(directory)
             publisher_path = fixture / "publisher" / "publisher.json"
             publisher = json.loads(publisher_path.read_text(encoding="utf-8"))
             publisher["plannedLegalEntity"]["status"] = "active"
@@ -69,19 +68,7 @@ class RegistrationTests(unittest.TestCase):
 
     def test_validator_rejects_non_founder_current_operator(self):
         with tempfile.TemporaryDirectory() as directory:
-            fixture = Path(directory)
-            for relative in [
-                "publisher/publisher.json",
-                ".codex-plugin/plugin.json",
-                ".claude-plugin/plugin.json",
-                ".claude-plugin/marketplace.json",
-                ".agents/plugins/marketplace.json",
-                "skills/skill-feedback-engine/SKILL.md",
-            ]:
-                source = ROOT / relative
-                target = fixture / relative
-                target.parent.mkdir(parents=True, exist_ok=True)
-                target.write_bytes(source.read_bytes())
+            fixture = copy_registration_fixture(directory)
             publisher_path = fixture / "publisher" / "publisher.json"
             publisher = json.loads(publisher_path.read_text(encoding="utf-8"))
             publisher["currentOperator"]["status"] = "llc-operated"
@@ -91,25 +78,31 @@ class RegistrationTests(unittest.TestCase):
 
     def test_validator_rejects_publication_without_founder_authority(self):
         with tempfile.TemporaryDirectory() as directory:
-            fixture = Path(directory)
-            for relative in [
-                "publisher/publisher.json",
-                ".codex-plugin/plugin.json",
-                ".claude-plugin/plugin.json",
-                ".claude-plugin/marketplace.json",
-                ".agents/plugins/marketplace.json",
-                "skills/skill-feedback-engine/SKILL.md",
-            ]:
-                source = ROOT / relative
-                target = fixture / relative
-                target.parent.mkdir(parents=True, exist_ok=True)
-                target.write_bytes(source.read_bytes())
+            fixture = copy_registration_fixture(directory)
             publisher_path = fixture / "publisher" / "publisher.json"
             publisher = json.loads(publisher_path.read_text(encoding="utf-8"))
             publisher["publication"]["authorizationBasis"] = "planned-entity"
             publisher_path.write_text(json.dumps(publisher), encoding="utf-8")
             errors = validate_registration(fixture)
             self.assertTrue(any("founder-owner-direct" in error for error in errors))
+
+    def test_validator_rejects_runtime_version_drift(self):
+        with tempfile.TemporaryDirectory() as directory:
+            fixture = copy_registration_fixture(directory)
+            runtime_path = fixture / "src" / "skill_feedback_engine" / "__init__.py"
+            runtime_path.write_text('__version__ = "9.9.9"\n', encoding="utf-8")
+            errors = validate_registration(fixture)
+            self.assertTrue(any("runtime version" in error for error in errors))
+
+    def test_validator_rejects_project_release_drift(self):
+        with tempfile.TemporaryDirectory() as directory:
+            fixture = copy_registration_fixture(directory)
+            status_path = fixture / ".project-status" / "manifest.json"
+            status = json.loads(status_path.read_text(encoding="utf-8"))
+            status["initiative"]["release"] = "v9.9.9"
+            status_path.write_text(json.dumps(status), encoding="utf-8")
+            errors = validate_registration(fixture)
+            self.assertTrue(any("project status release" in error for error in errors))
 
 
 if __name__ == "__main__":

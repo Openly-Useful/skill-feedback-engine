@@ -11,6 +11,8 @@ from typing import Any, Dict, List
 
 ROOT = Path(__file__).resolve().parents[1]
 SEMVER = re.compile(r"^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)$")
+PYPROJECT_VERSION = re.compile(r'^version\s*=\s*"([^"]+)"\s*$', re.MULTILINE)
+PYTHON_VERSION = re.compile(r'^__version__\s*=\s*"([^"]+)"\s*$', re.MULTILINE)
 
 
 def read_json(path: Path, errors: List[str]) -> Dict[str, Any]:
@@ -78,6 +80,22 @@ def validate_registration(root: Path = ROOT) -> List[str]:
         errors.append("component must expose exactly one canonical skill")
     if component.get("mcp") is not False:
         errors.append("Skill Feedback Engine must explicitly remain MCP-free")
+
+    component_version = str(component.get("version", ""))
+    version_sources = [
+        ("package", root / "pyproject.toml", PYPROJECT_VERSION),
+        ("runtime", root / "src" / "skill_feedback_engine" / "__init__.py", PYTHON_VERSION),
+    ]
+    for label, path, pattern in version_sources:
+        try:
+            match = pattern.search(path.read_text(encoding="utf-8"))
+        except OSError:
+            match = None
+        if match is None or match.group(1) != component_version:
+            errors.append(f"{label} version must match publisher component version")
+    project_status = read_json(root / ".project-status" / "manifest.json", errors)
+    if project_status.get("initiative", {}).get("release") != f"v{component_version}":
+        errors.append("project status release must match publisher component version")
 
     skill_artifacts = sorted(path.relative_to(root).as_posix() for path in (root / "skills").rglob("SKILL*.md"))
     if skill_artifacts != ["skills/skill-feedback-engine/SKILL.md"]:
