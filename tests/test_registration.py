@@ -67,6 +67,50 @@ class RegistrationTests(unittest.TestCase):
             errors = validate_registration(fixture)
             self.assertTrue(any("formation-pending" in error for error in errors))
 
+    def test_validator_rejects_non_founder_current_operator(self):
+        with tempfile.TemporaryDirectory() as directory:
+            fixture = Path(directory)
+            for relative in [
+                "publisher/publisher.json",
+                ".codex-plugin/plugin.json",
+                ".claude-plugin/plugin.json",
+                ".claude-plugin/marketplace.json",
+                ".agents/plugins/marketplace.json",
+                "skills/skill-feedback-engine/SKILL.md",
+            ]:
+                source = ROOT / relative
+                target = fixture / relative
+                target.parent.mkdir(parents=True, exist_ok=True)
+                target.write_bytes(source.read_bytes())
+            publisher_path = fixture / "publisher" / "publisher.json"
+            publisher = json.loads(publisher_path.read_text(encoding="utf-8"))
+            publisher["currentOperator"]["status"] = "llc-operated"
+            publisher_path.write_text(json.dumps(publisher), encoding="utf-8")
+            errors = validate_registration(fixture)
+            self.assertTrue(any("founder-operated" in error for error in errors))
+
+    def test_validator_rejects_publication_without_founder_authority(self):
+        with tempfile.TemporaryDirectory() as directory:
+            fixture = Path(directory)
+            for relative in [
+                "publisher/publisher.json",
+                ".codex-plugin/plugin.json",
+                ".claude-plugin/plugin.json",
+                ".claude-plugin/marketplace.json",
+                ".agents/plugins/marketplace.json",
+                "skills/skill-feedback-engine/SKILL.md",
+            ]:
+                source = ROOT / relative
+                target = fixture / relative
+                target.parent.mkdir(parents=True, exist_ok=True)
+                target.write_bytes(source.read_bytes())
+            publisher_path = fixture / "publisher" / "publisher.json"
+            publisher = json.loads(publisher_path.read_text(encoding="utf-8"))
+            publisher["publication"]["authorizationBasis"] = "planned-entity"
+            publisher_path.write_text(json.dumps(publisher), encoding="utf-8")
+            errors = validate_registration(fixture)
+            self.assertTrue(any("founder-owner-direct" in error for error in errors))
+
 
 if __name__ == "__main__":
     unittest.main()

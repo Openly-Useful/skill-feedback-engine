@@ -16,6 +16,12 @@
       "licensee"
     ]
   },
+  "currentOperator": {
+    "status": "founder-operated",
+    "type": "founder-individual",
+    "displayName": "Founder of Openly Useful",
+    "operatingAs": "Openly Useful"
+  },
   "policies": {
     "privacy": "https://openlyuseful.org/legal/privacy",
     "terms": "https://openlyuseful.org/legal/terms",
@@ -39,8 +45,15 @@
     ],
     "mcp": false
   },
-  "externalPublication": {
-    "allowed": false,
-    "authorization": "withheld"
+  "publication": {
+    "externalPublicationAllowed": true,
+    "authorization": "granted",
+    "authorizationBasis": "founder-owner-direct",
+    "effectiveWhileFormationPending": true,
+    "blockingRequirements": [
+      "namespace-verification",
+      "provider-account-authentication",
+      "provider-review"
+    ]
   }
 }

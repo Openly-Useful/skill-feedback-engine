@@ -160,7 +160,7 @@ The repository root is a skill-only plugin for OpenAI/Codex and Claude. `.codex-
 
 Skill Feedback Engine has no MCP component, and none is declared by these manifests. The registration files prepare local discovery only; they do not install, authenticate, publish, or activate anything externally.
 
-`publisher/publisher.json` derives Openly Useful identity and public policy URLs from <https://openlyuseful.org/publisher/manifest.json>. Openly Useful LLC remains a planned, formation-pending publisher/operator/licensee, and external publication authorization remains withheld.
+`publisher/publisher.json` derives Openly Useful identity and public policy URLs from <https://openlyuseful.org/publisher/manifest.json>. Openly Useful is founder-operated while Openly Useful LLC remains formation-pending. External publication is authorized directly by the founder-owner, subject to namespace verification, provider-account authentication, and provider review. This does not represent the planned LLC as formed, active, or the current operator.
 
 ## Daily review on macOS
 

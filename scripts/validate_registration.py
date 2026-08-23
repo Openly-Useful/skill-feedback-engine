@@ -46,8 +46,27 @@ def validate_registration(root: Path = ROOT) -> List[str]:
         errors.append("planned entity must be Openly Useful LLC with formation-pending status")
     elif sorted(legal.get("roles", [])) != ["licensee", "operator", "publisher"]:
         errors.append("planned entity roles are invalid")
-    if publisher.get("externalPublication") != {"allowed": False, "authorization": "withheld"}:
-        errors.append("external publication must remain withheld")
+    expected_operator = {
+        "status": "founder-operated",
+        "type": "founder-individual",
+        "displayName": "Founder of Openly Useful",
+        "operatingAs": "Openly Useful",
+    }
+    if publisher.get("currentOperator") != expected_operator:
+        errors.append("current operation must remain founder-operated while formation is pending")
+    expected_publication = {
+        "externalPublicationAllowed": True,
+        "authorization": "granted",
+        "authorizationBasis": "founder-owner-direct",
+        "effectiveWhileFormationPending": True,
+        "blockingRequirements": [
+            "namespace-verification",
+            "provider-account-authentication",
+            "provider-review",
+        ],
+    }
+    if publisher.get("publication") != expected_publication:
+        errors.append("external publication must use founder-owner-direct authority while formation is pending")
 
     component = publisher.get("component")
     if not isinstance(component, dict):
