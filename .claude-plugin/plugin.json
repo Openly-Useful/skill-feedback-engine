@@ -1,0 +1,14 @@
+{
+  "name": "skill-feedback-engine",
+  "version": "0.1.0",
+  "description": "Local-first, review-gated feedback for improving Agent Skills without exporting raw evidence.",
+  "author": {
+    "name": "Openly Useful",
+    "email": "hello@openlyuseful.org",
+    "url": "https://openlyuseful.org"
+  },
+  "homepage": "https://github.com/Openly-Useful/skill-feedback-engine",
+  "repository": "https://github.com/Openly-Useful/skill-feedback-engine",
+  "license": "MIT",
+  "skills": "./skills/"
+}

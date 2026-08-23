@@ -1,0 +1,39 @@
+{
+  "name": "skill-feedback-engine",
+  "version": "0.1.0",
+  "description": "Local-first, review-gated feedback for improving Agent Skills without exporting raw evidence.",
+  "author": {
+    "name": "Openly Useful",
+    "email": "hello@openlyuseful.org",
+    "url": "https://openlyuseful.org"
+  },
+  "homepage": "https://github.com/Openly-Useful/skill-feedback-engine",
+  "repository": "https://github.com/Openly-Useful/skill-feedback-engine",
+  "license": "MIT",
+  "keywords": [
+    "agent-skills",
+    "feedback",
+    "review",
+    "local-first"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Skill Feedback Engine",
+    "shortDescription": "Turn recurring corrections into reviewed skill proposals",
+    "longDescription": "A local-first feedback loop that captures reusable corrections, failures, patterns, and outcomes; keeps raw evidence private; and prepares sanitized, review-gated proposals for improving Agent Skills.",
+    "developerName": "Openly Useful",
+    "category": "Productivity",
+    "capabilities": [
+      "Local feedback",
+      "Review-gated proposals"
+    ],
+    "websiteURL": "https://github.com/Openly-Useful/skill-feedback-engine",
+    "privacyPolicyURL": "https://openlyuseful.org/legal/privacy",
+    "termsOfServiceURL": "https://openlyuseful.org/legal/terms",
+    "defaultPrompt": [
+      "Capture this correction as reusable skill feedback after the task.",
+      "Review recurring skill feedback and prepare draft proposals."
+    ],
+    "brandColor": "#247A4B"
+  }
+}
