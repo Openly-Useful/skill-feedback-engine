@@ -18,3 +18,4 @@ jobs:
       - run: python -m pip install -e .
       - run: python -m unittest discover -s tests -v
       - run: skill-feedback validate skills/skill-feedback-engine
+      - run: python scripts/validate_registration.py

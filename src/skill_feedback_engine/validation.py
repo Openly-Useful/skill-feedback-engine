@@ -21,6 +21,14 @@ def validate_skill(path: Path) -> Dict[str, Any]:
             "errors": ["SKILL.md not found"],
             "warnings": warnings,
         }
+    if path.is_dir():
+        duplicate_artifacts = sorted(
+            candidate.name for candidate in path.glob("SKILL*.md") if candidate.name != "SKILL.md"
+        )
+        if duplicate_artifacts:
+            errors.append(
+                "duplicate or unexpected SKILL artifacts: " + ", ".join(duplicate_artifacts)
+            )
     content = skill_file.read_text(encoding="utf-8")
     if not content.startswith("---\n"):
         errors.append("SKILL.md must start with YAML frontmatter")

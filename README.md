@@ -154,6 +154,14 @@ Then add `adapters/codex/AGENTS.snippet.md` to the applicable persistent instruc
 
 Provider adapters contain activation guidance only. They all use the same CLI, database, observation policy, and export format.
 
+## Repository-local plugin registration
+
+The repository root is a skill-only plugin for OpenAI/Codex and Claude. `.codex-plugin/plugin.json` and `.claude-plugin/plugin.json` both expose the existing canonical `./skills/` directory, so provider registration does not create wrapper copies of `SKILL.md`. Repository-local catalogs are at `.agents/plugins/marketplace.json` and `.claude-plugin/marketplace.json`.
+
+Skill Feedback Engine has no MCP component, and none is declared by these manifests. The registration files prepare local discovery only; they do not install, authenticate, publish, or activate anything externally.
+
+`publisher/publisher.json` derives Openly Useful identity and public policy URLs from <https://openlyuseful.org/publisher/manifest.json>. Openly Useful LLC remains a planned, formation-pending publisher/operator/licensee, and external publication authorization remains withheld.
+
 ## Daily review on macOS
 
 `adapters/codex/com.openlyuseful.skill-feedback-engine.plist` is a launchd template for 4:00 AM in the machine's local timezone, including daylight-saving changes.
@@ -174,6 +182,7 @@ Replace `__SKILL_FEEDBACK_EXECUTABLE__` with the absolute path returned by `comm
 python3 -m unittest discover -s tests -v
 python3 -m skill_feedback_engine --help
 python3 -m skill_feedback_engine validate skills/skill-feedback-engine
+python3 scripts/validate_registration.py
 ```
 
 When running directly from a checkout without installing it, set `PYTHONPATH=src` before the `python3 -m skill_feedback_engine` commands.

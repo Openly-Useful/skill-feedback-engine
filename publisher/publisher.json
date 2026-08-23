@@ -1,0 +1,46 @@
+{
+  "schemaVersion": 1,
+  "authorityManifest": "https://openlyuseful.org/publisher/manifest.json",
+  "publisher": {
+    "displayName": "Openly Useful",
+    "homepage": "https://openlyuseful.org",
+    "studio": "https://openlyuseful.com",
+    "publicContact": "hello@openlyuseful.org"
+  },
+  "plannedLegalEntity": {
+    "name": "Openly Useful LLC",
+    "status": "formation-pending",
+    "roles": [
+      "publisher",
+      "operator",
+      "licensee"
+    ]
+  },
+  "policies": {
+    "privacy": "https://openlyuseful.org/legal/privacy",
+    "terms": "https://openlyuseful.org/legal/terms",
+    "security": "https://openlyuseful.org/security",
+    "support": "https://openlyuseful.org/support"
+  },
+  "namespaces": {
+    "npm": "@openly-useful",
+    "openSourceMcp": "org.openlyuseful",
+    "reservedStudioMcp": "com.openlyuseful"
+  },
+  "component": {
+    "name": "skill-feedback-engine",
+    "displayName": "Skill Feedback Engine",
+    "version": "0.1.0",
+    "repository": "https://github.com/Openly-Useful/skill-feedback-engine",
+    "license": "MIT",
+    "skillsPath": "./skills/",
+    "skillNames": [
+      "skill-feedback-engine"
+    ],
+    "mcp": false
+  },
+  "externalPublication": {
+    "allowed": false,
+    "authorization": "withheld"
+  }
+}
