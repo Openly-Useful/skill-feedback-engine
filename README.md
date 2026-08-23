@@ -12,7 +12,7 @@ It does not silently rewrite skills, publish conversation history, or merge pull
 
 ## Status
 
-This repository contains the functional [`v0.1.0`](https://github.com/Openly-Useful/skill-feedback-engine/releases/tag/v0.1.0) core:
+This repository contains the functional [`v0.1.1`](https://github.com/Openly-Useful/skill-feedback-engine/releases/tag/v0.1.1) core:
 
 - Standard-library Python CLI with no runtime dependencies.
 - Concurrent-safe SQLite state under `~/.local/share/skill-feedback-engine` by default.

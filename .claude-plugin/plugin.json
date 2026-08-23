@@ -1,6 +1,6 @@
 {
   "name": "skill-feedback-engine",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Local-first, review-gated feedback for improving Agent Skills without exporting raw evidence.",
   "author": {
     "name": "Openly Useful",

@@ -36,7 +36,7 @@
   "component": {
     "name": "skill-feedback-engine",
     "displayName": "Skill Feedback Engine",
-    "version": "0.1.0",
+    "version": "0.1.1",
     "repository": "https://github.com/Openly-Useful/skill-feedback-engine",
     "license": "MIT",
     "skillsPath": "./skills/",

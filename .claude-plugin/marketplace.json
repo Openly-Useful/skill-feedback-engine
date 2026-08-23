@@ -1,7 +1,7 @@
 {
   "$schema": "https://json.schemastore.org/claude-code-marketplace.json",
   "name": "skill-feedback-engine",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Openly Useful local-first, review-gated feedback for Agent Skills.",
   "owner": {
     "name": "Openly Useful",
@@ -13,7 +13,7 @@
       "name": "skill-feedback-engine",
       "source": "./",
       "description": "Capture reusable corrections and prepare sanitized, review-gated Agent Skill proposals.",
-      "version": "0.1.0",
+      "version": "0.1.1",
       "author": {
         "name": "Openly Useful",
         "email": "hello@openlyuseful.org",
